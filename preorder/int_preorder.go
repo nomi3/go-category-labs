@@ -1,7 +1,11 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strconv"
+	"strings"
 )
 
 func generatePreorderRelation(set []int) map[[2]int]bool {
@@ -21,9 +25,24 @@ func generatePreorderRelation(set []int) map[[2]int]bool {
 }
 
 func main() {
-	exampleSet := []int{1, 3, 5, 7}
+	fmt.Println("Enter a list of integers separated by space:")
 
-	preorder := generatePreorderRelation(exampleSet)
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	input := scanner.Text()
+
+	inputNumbers := strings.Fields(input)
+	var set []int
+	for _, numStr := range inputNumbers {
+		num, err := strconv.Atoi(numStr)
+		if err != nil {
+			fmt.Printf("Error converting '%s' to int: %s\n", numStr, err)
+			return
+		}
+		set = append(set, num)
+	}
+
+	preorder := generatePreorderRelation(set)
 
 	for relation, isRelated := range preorder {
 		fmt.Printf("%v: %t\n", relation, isRelated)
