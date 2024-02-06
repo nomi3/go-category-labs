@@ -22,7 +22,7 @@ func compare(x, y interface{}) bool {
 	return false
 }
 
-func generatePreorderRelation(set []interface{}) map[[2]interface{}]bool {
+func generateAnyPreorderRelation(set []interface{}) map[[2]interface{}]bool {
 	preorderRelation := make(map[[2]interface{}]bool)
 
 	for _, element := range set {
@@ -55,7 +55,7 @@ func main() {
 		}
 	}
 
-	preorder := generatePreorderRelation(set)
+	preorder := generateAnyPreorderRelation(set)
 
 	for relation, isRelated := range preorder {
 		fmt.Printf("%v: %t\n", relation, isRelated)
