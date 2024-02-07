@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestgenerateAnyPreorderRelationInts(t *testing.T) {
+func TestGenerateAnyPreorderRelationInts(t *testing.T) {
 	set := []interface{}{1, 2, 3}
 	expected := map[[2]interface{}]bool{
 		{1, 1}: true, {1, 2}: true, {1, 3}: true,
@@ -19,7 +19,7 @@ func TestgenerateAnyPreorderRelationInts(t *testing.T) {
 	}
 }
 
-func TestgenerateAnyPreorderRelationStrings(t *testing.T) {
+func TestGenerateAnyPreorderRelationStrings(t *testing.T) {
 	set := []interface{}{"apple", "banana", "cherry"}
 	expected := map[[2]interface{}]bool{
 		{"apple", "apple"}: true, {"apple", "banana"}: true, {"apple", "cherry"}: true,
