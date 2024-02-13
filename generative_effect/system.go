@@ -12,6 +12,10 @@ func NewSystem() *System {
 	}
 }
 
+func (s *System) AddConnection(point string, connections []string) {
+	s.connections[point] = connections
+}
+
 // Connect creates a bidirectional connection between two points.
 func (s *System) Connect(p1, p2 string) {
 	// Avoid duplicating connections

@@ -1,9 +1,32 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 )
 
+func TestConnect(t *testing.T) {
+	// Create a new system
+	s := NewSystem()
+	fmt.Println(s)
+
+	// add a no connect point to the system
+	s.AddConnection("A", []string{})
+	s.AddConnection("B", []string{})
+
+	if s.IsConnected("A", "B") {
+		t.Errorf("Expected A and B not to be connected, but they are already connected")
+	}
+
+	// Connect two points
+	s.Connect("A", "B")
+	fmt.Println(s)
+
+	// Test if A and B are connected
+	if !s.IsConnected("A", "B") {
+		t.Errorf("Expected A and B to be connected, but they are not")
+	}
+}
 // TestSystemJoin tests the joining of two systems and checks connectivity.
 func TestSystemJoin(t *testing.T) {
 	// Create first system and connect A to B
