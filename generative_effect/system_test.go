@@ -1,14 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"testing"
 )
 
 func TestConnect(t *testing.T) {
 	// Create a new system
 	s := NewSystem()
-	fmt.Println(s)
 
 	// add a no connect point to the system
 	s.AddConnection("A", []string{})
@@ -20,7 +18,6 @@ func TestConnect(t *testing.T) {
 
 	// Connect two points
 	s.Connect("A", "B")
-	fmt.Println(s)
 
 	// Test if A and B are connected
 	if !s.IsConnected("A", "B") {

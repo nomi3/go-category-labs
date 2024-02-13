@@ -19,15 +19,14 @@ func (s *System) AddConnection(point string, connections []string) {
 // Connect creates a bidirectional connection between two points.
 func (s *System) Connect(p1, p2 string) {
 	// Avoid duplicating connections
-	if !s.isConnected(p1, p2) {
+	if !s.IsConnected(p1, p2) {
 		s.connections[p1] = append(s.connections[p1], p2)
 	}
-	if !s.isConnected(p2, p1) {
+	if !s.IsConnected(p2, p1) {
 		s.connections[p2] = append(s.connections[p2], p1)
 	}
 }
 
-// IsConnected checks if two points are directly or indirectly connected.
 func (s *System) IsConnected(p1, p2 string) bool {
 	visited := make(map[string]bool)
 	return s.checkConnectivity(p1, p2, visited)
@@ -51,16 +50,6 @@ func (s *System) checkConnectivity(current, target string, visited map[string]bo
 		}
 	}
 
-	return false
-}
-
-// isConnected checks if there is a direct connection from p1 to p2.
-func (s *System) isConnected(p1, p2 string) bool {
-	for _, point := range s.connections[p1] {
-		if point == p2 {
-			return true
-		}
-	}
 	return false
 }
 
